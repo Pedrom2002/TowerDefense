@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (startPoint == null)
         {
-            LevelManager levelManager = FindObjectOfType<LevelManager>();
+            LevelManager levelManager = Object.FindFirstObjectByType<LevelManager>();
             if (levelManager != null)
             {
                 startPoint = levelManager.startPoint;
