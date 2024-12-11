@@ -56,12 +56,15 @@ public class EnemySpawner : MonoBehaviour
             enemiesAlive++;
             timeSinceLastSpawn = 0f;
         }
-        if(enemiesAlive == 0 && enemiesLeftToSpawn == 0 && isSpawning){
+
+        if (enemiesLeftToSpawn == 0 && enemiesAlive == 0 && isSpawning)
+        {
             EndWave();
         }
     }
 
-    private void EnemyDestroyed(){
+    private void EnemyDestroyed()
+    {
         enemiesAlive--;
     }
 
@@ -72,16 +75,16 @@ public class EnemySpawner : MonoBehaviour
         enemiesLeftToSpawn = EnemiesPerWave();
     }
 
-    private void EndWave(){
-    isSpawning = false;
-    timeSinceLastSpawn=0f;
-    currentWave++;
-    StartCoroutine(StartWave());    
-}
+    private void EndWave()
+    {
+        isSpawning = false;
+        timeSinceLastSpawn = 0f;
+        currentWave++;
+        StartCoroutine(StartWave());
+    }
     private void SpawnEnemy()
     {
         Debug.Log("Spawned Enemy");
-
 
         GameObject prefabToSpawn = enemyPrefabs[0];
         GameObject enemy = Instantiate(prefabToSpawn, startPoint.position, Quaternion.identity);
