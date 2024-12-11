@@ -5,12 +5,16 @@ public class Turret : MonoBehaviour {
     [Header("References")]
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private GameObject bulletPreFab;
+    [SerializeField] private Transform firingPoint;
 
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float bps= 1f; //Bullets Per Second
     private Transform target;
+    private float timeUntilFire;
     private void Update() {
          if(target==null){
             FindTarget();
@@ -18,8 +22,16 @@ public class Turret : MonoBehaviour {
          } 
 
          RotateTowardsTarget();
+
          if (!CheckTargetIsInRange()){
             target = null;
+         } else {
+             timeUntilFire += Time.deltaTime;
+             if(timeUntilFire >= 1f/bps){
+                Shoot();
+                timeUntilFire = 0f;
+
+             }
          }
 
          bool CheckTargetIsInRange() {
@@ -27,7 +39,11 @@ public class Turret : MonoBehaviour {
          }
     
     }
-
+    private void Shoot(){
+        GameObject bulletobj = Instantiate(bulletPreFab, firingPoint.position, Quaternion.identity);
+        Bullet bulletScript = bulletobj.GetComponent<Bullet>();
+        bulletScript.SetTarget(target);
+    }
     private void FindTarget(){
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 
         0f,enemyMask);
