@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - map
   - Water
   - UI
   - Enemy
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Mapa
+    uniqueID: 4079770175
+    locked: 0
+  - name: BelowTower
+    uniqueID: 2100137067
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
