@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3885850229709275702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.73, y: 4.79, z: 0}
+  m_LocalPosition: {x: -2.7985935, y: 6.979541, z: 0}
   m_LocalScale: {x: 2.189534, y: 2.2885776, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -105,9 +105,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   iceEffectPart: {fileID: 4235923783545021473}
-  targetingRange: 5
-  aps: 0.25
-  freezeTime: 1.5
+  targetingRange: 4
+  aps: 0.5
+  freezeTime: 1
 --- !u!1 &4235923783545021473
 GameObject:
   m_ObjectHideFlags: 0

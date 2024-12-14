@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 5f;
 
+
+
     private Transform target;
     private int pathIndex = 0;
 
@@ -58,4 +60,18 @@ public class EnemyMovement : MonoBehaviour
         moveSpeed = baseSpeed;
         
     }
+
+    public float GetBaseSpeed()
+    {
+        return baseSpeed;
+    }
+    public bool IsAlive { get; private set; } = true; // Verifica se o inimigo está vivo
+
+    public void Die()
+    {
+        IsAlive = false; // Marca o inimigo como morto
+        // Adicione aqui qualquer lógica de morte (destruição, animação, etc.)
+        Destroy(gameObject); // Destroi o inimigo
+    }
+
 }

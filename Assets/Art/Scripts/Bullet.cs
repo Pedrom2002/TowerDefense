@@ -20,9 +20,15 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity= direction * bulletSpeed;
         
     }
-    private void OnCollisionEnter2D(Collision2D other) {
-        other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);
-        Destroy(gameObject);
+    private bool hasHit = false;
+
+private void OnCollisionEnter2D(Collision2D other) {
+    if (hasHit) return; // Verifica se a bala já causou dano
+    Health health = other.gameObject.GetComponent<Health>();
+    if (health != null) {
+        health.TakeDamage(bulletDamage); // Aplica dano
+        hasHit = true; // Marca que a bala já acertou um inimigo
+        Destroy(gameObject); // Destrói a bala após acertar o inimigo
     }
-        
+}
 }

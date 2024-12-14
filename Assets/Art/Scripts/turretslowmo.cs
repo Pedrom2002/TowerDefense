@@ -1,44 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class turretslowmo : MonoBehaviour
-{ 
+public class TurretSlowMo : MonoBehaviour
+{
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject iceEffectPart; // Referência ao efeito de gelo
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 5f; // Distância de alcance do efeito de gelo
-    [SerializeField] private float aps = 4f; // Quantidade de vezes que a torre dispara por segundo (tempo mínimo para reativação)
+    [SerializeField] private float aps = 0.5f; // Quantidade de vezes que a torre dispara por segundo (tempo mínimo para reativação)
     [SerializeField] private float freezeTime = 1f; // Duração do efeito de desaceleração
     private float timeUntilFire; // Tempo até a próxima ativação
     private bool isFreezing; // Indica se o efeito está ativo
     private List<EnemyMovement> affectedEnemies = new List<EnemyMovement>(); // Lista de inimigos afetados pelo gelo
 
-    private void Update() {
+    private EnemySpawner enemySpawner; // Variável para armazenar a referência ao EnemySpawner
+
+    private void Start()
+    {
+        // Encontra o EnemySpawner na cena
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+    }
+
+    private void Update()
+    {
+        if (enemySpawner != null && enemySpawner.enemiesAlive <= 0) // Verifica se a wave está completa
+        {
+            DestroyTurret(); // Destroi a torre quando a wave for completada
+            return;
+        }
+
         timeUntilFire += Time.deltaTime;
 
-        if (!isFreezing && timeUntilFire >= 1f / aps) {
+        if (!isFreezing && timeUntilFire >= 1f / aps)
+        {
             CheckForEnemiesAndActivate();
         }
     }
 
-    private void CheckForEnemiesAndActivate() {
+    private void CheckForEnemiesAndActivate()
+    {
         // Verifica se há inimigos no alcance
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
-        if (hits.Length > 0) {
+        if (hits.Length > 0)
+        {
             ActivateFreezeEffect(); // Ativa o efeito de desaceleração e visual
         }
     }
 
-    private void ActivateFreezeEffect() {
+    private void ActivateFreezeEffect()
+    {
         isFreezing = true; // Marca que o efeito está ativo
         timeUntilFire = 0f; // Reseta o tempo de recarga
 
         // Ativa o efeito visual
-        if (iceEffectPart != null) {
+        if (iceEffectPart != null)
+        {
             iceEffectPart.SetActive(true);
         }
 
@@ -46,18 +65,22 @@ public class turretslowmo : MonoBehaviour
         StartCoroutine(FreezeEnemiesDuringEffect());
     }
 
-    private IEnumerator FreezeEnemiesDuringEffect() {
+    private IEnumerator FreezeEnemiesDuringEffect()
+    {
         float timer = 0f;
 
-        while (timer < freezeTime) {
+        while (timer < freezeTime)
+        {
             timer += Time.deltaTime;
 
             // Verifica inimigos no alcance
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, Vector2.zero, 0f, enemyMask);
-            foreach (RaycastHit2D hit in hits) {
+            foreach (RaycastHit2D hit in hits)
+            {
                 EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
 
-                if (em != null && !affectedEnemies.Contains(em)) {
+                if (em != null && !affectedEnemies.Contains(em))
+                {
                     affectedEnemies.Add(em); // Adiciona novos inimigos à lista
                     em.UpdateSpeed(0.5f); // Aplica o efeito de desaceleração
                 }
@@ -67,8 +90,10 @@ public class turretslowmo : MonoBehaviour
         }
 
         // Após o término do freezeTime, restaura a velocidade dos inimigos e desativa o efeito visual
-        foreach (EnemyMovement em in affectedEnemies) {
-            if (em != null) {
+        foreach (EnemyMovement em in affectedEnemies)
+        {
+            if (em != null)
+            {
                 em.ResetSpeed();
             }
         }
@@ -76,13 +101,17 @@ public class turretslowmo : MonoBehaviour
         affectedEnemies.Clear(); // Limpa a lista de inimigos afetados
         isFreezing = false; // Marca que o efeito terminou
 
-        if (iceEffectPart != null) {
+        if (iceEffectPart != null)
+        {
             iceEffectPart.SetActive(false);
         }
     }
 
-    private void OnDrawGizmosSelected() {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+    // Destroi a torre de desaceleração
+    private void DestroyTurret()
+    {
+        Destroy(gameObject);
     }
+
+
 }

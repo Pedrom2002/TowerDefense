@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Enemy
+  - Tank
   layers:
   - Default
   - TransparentFX
@@ -52,6 +54,12 @@ TagManager:
     locked: 0
   - name: New Layer 2
     uniqueID: 2851397989
+    locked: 0
+  - name: ui
+    uniqueID: 1824047099
+    locked: 0
+  - name: enemies
+    uniqueID: 3743656041
     locked: 0
   m_RenderingLayers:
   - Default
