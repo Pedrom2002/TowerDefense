@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
         currentWaveCurrency = 0;
     }
 
-    private void ApplyDifficultySettings()
+    public void ApplyDifficultySettings()
 {
     switch (difficulty)
     {

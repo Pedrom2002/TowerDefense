@@ -87,7 +87,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void EnemyDestroyed()
+    public void EnemyDestroyed()
     {
         enemiesAlive--;
     }

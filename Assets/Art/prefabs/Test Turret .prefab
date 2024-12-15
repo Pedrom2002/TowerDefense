@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 2436091029773397312}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.66, y: 9.83, z: -26.78071}
-  m_LocalScale: {x: 1.516003, y: 1.6516145, z: 1}
+  m_LocalPosition: {x: -15.8881, y: 10.0818, z: -26.78071}
+  m_LocalScale: {x: 1.8825724, y: 2.0179427, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5209859028933538786}
@@ -52,7 +52,7 @@ MonoBehaviour:
     m_Bits: 64
   bulletPreFab: {fileID: 2916285120580704871, guid: 9f4dec9c520b174408a0314177f29a03, type: 3}
   firingPoint: {fileID: 6914869275552594401}
-  targetingRange: 10
+  targetingRange: 20
   rotationSpeed: 200
   bps: 0.5
 --- !u!1 &4632275159909556242
@@ -81,8 +81,8 @@ Transform:
   m_GameObject: {fileID: 4632275159909556242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.023, y: 0.0089, z: 26.78071}
-  m_LocalScale: {x: 1.7627796, y: 1.5828043, z: 0}
+  m_LocalPosition: {x: -0.2611, y: 0.306, z: 26.78071}
+  m_LocalScale: {x: 2.5983372, y: 2.2580285, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2109969841603254256}
@@ -286,8 +286,8 @@ Transform:
   m_GameObject: {fileID: 9184599588488351540}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00499986, y: 0.050999995, z: 26.78071}
-  m_LocalScale: {x: 0.65962934, y: 0.6054681, z: 1}
+  m_LocalPosition: {x: -0.3023, y: 0.3661, z: 26.78071}
+  m_LocalScale: {x: 0.9722936, y: 0.86376077, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8374149046798553805}
