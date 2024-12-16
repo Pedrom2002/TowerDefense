@@ -65,21 +65,21 @@ public class LevelManager : MonoBehaviour
             maxCurrency = 200;
             maxWaveCurrency = 200;
             currency = 150;
-            speedScalingFactor = 1.2f;  // Definindo o valor para Easy
+            speedScalingFactor = 1.1f;  // Definindo o valor para Easy
             break;
 
         case DifficultyLevel.Medium:
             maxCurrency = 200;
             maxWaveCurrency = 150;
             currency = 150;
-            speedScalingFactor = 1.35f;  // Definindo o valor para Medium
+            speedScalingFactor = 1.2f;  // Definindo o valor para Medium
             break;
 
         case DifficultyLevel.Hard:
             maxCurrency = 200;
             maxWaveCurrency = 150;
-            currency = 150;
-            speedScalingFactor = 1.5f;  // Definindo o valor para Hard
+            currency = 100;
+            speedScalingFactor = 1.3f;  // Definindo o valor para Hard
             break;
     }
 
@@ -102,4 +102,6 @@ public class LevelManager : MonoBehaviour
     {
         return speedScalingFactor;
     }
+
+    
 }
