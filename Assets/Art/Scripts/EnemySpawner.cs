@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int currentWave = 1;
     private float timeSinceLastSpawn;
-    private int enemiesLeftToSpawn;
+    public int enemiesLeftToSpawn;
     public int enemiesAlive;
     private float eps;
     private bool isSpawning = false;
@@ -131,21 +131,30 @@ public class EnemySpawner : MonoBehaviour
         playerLife = 100; // Restaura a vida inicial
         timeSinceLastSpawn = 0f;
     }
+private IEnumerator StartWave()
+{
+    yield return new WaitForSeconds(timeBetweenWaves);
+    isSpawning = true;
+    enemiesLeftToSpawn = EnemiesPerWave();
+    eps = EnemiesPerSecond();
+    AdjustEnemySpeed();
 
-    private IEnumerator StartWave()
+    // Obtendo uma referência ao LevelManager na cena
+    LevelManager levelManager = Object.FindObjectOfType<LevelManager>();
+    if (levelManager != null)
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
-        isSpawning = true;
-        enemiesLeftToSpawn = EnemiesPerWave();
-        eps = EnemiesPerSecond();
-        AdjustEnemySpeed();
-
-        if (spawningIndicator != null)
-        {
-            spawningIndicator.enabled = true;
-        }
+        levelManager.ResetWaveCurrency(); // Chama o método da instância
+    }
+    else
+    {
+        Debug.LogError("LevelManager não encontrado na cena.");
     }
 
+    if (spawningIndicator != null)
+    {
+        spawningIndicator.enabled = true;
+    }
+}
     private void EndWave()
     {
         isSpawning = false;
@@ -160,13 +169,16 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(StartWave());
     }
 
+    
     private void SpawnEnemy()
     {
+        if(enemyPrefabs.Length > 0){
         int index = Random.Range(0, enemyPrefabs.Length);
-
+        
         GameObject prefabToSpawn = enemyPrefabs[index];
         GameObject enemy = Instantiate(prefabToSpawn, startPoint.position, Quaternion.identity);
         enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y, 1f);
+        }
     }
 
     private int EnemiesPerWave()

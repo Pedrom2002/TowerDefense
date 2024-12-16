@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Plot : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class Plot : MonoBehaviour
         if(towerToBuild.cost > LevelManager.main.currency){
             return;
         }
+        Debug.Log(towerToBuild);
+        Debug.Log("towerToBuild");
         LevelManager.main.SpendCurrency(towerToBuild.cost);
         towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
         turret = towerObj.GetComponent<Turret>();

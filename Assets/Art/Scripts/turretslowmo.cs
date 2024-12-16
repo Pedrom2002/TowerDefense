@@ -26,10 +26,14 @@ public class TurretSlowMo : MonoBehaviour
 
     private void Update()
     {
-        if (enemySpawner != null && enemySpawner.enemiesAlive <= 0) // Verifica se a wave está completa
+        if (enemySpawner.enemiesLeftToSpawn <= 0 && enemySpawner.enemiesAlive <= 0) // Verifica se a wave está completa
         {
+            Debug.Log(enemySpawner.enemiesLeftToSpawn);
+            Debug.Log(enemySpawner.enemiesAlive);
             DestroyTurret(); // Destroi a torre quando a wave for completada
+        
             return;
+            
         }
 
         timeUntilFire += Time.deltaTime;
