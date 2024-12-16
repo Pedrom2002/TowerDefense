@@ -763,7 +763,6 @@ GameObject:
   - component: {fileID: 764477527}
   - component: {fileID: 764477526}
   - component: {fileID: 764477530}
-  - component: {fileID: 764477531}
   m_Layer: 5
   m_Name: Dificuldade
   m_TagString: Untagged
@@ -870,22 +869,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuCanvas: {fileID: 1309033073}
   difficultyMenuCanvas: {fileID: 764477524}
---- !u!114 &764477531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764477524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5694354a72d05e143b3df634aed79b3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficulty: 0
-  startPoint: {fileID: 0}
-  path: []
-  currency: 0
 --- !u!1 &1020106249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,6 +1951,7 @@ GameObject:
   - component: {fileID: 1309033075}
   - component: {fileID: 1309033074}
   - component: {fileID: 1309033078}
+  - component: {fileID: 1309033079}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2078,6 +2062,22 @@ MonoBehaviour:
   startButton: {fileID: 1247497933}
   difficultyButton: {fileID: 1043954986}
   exitButton: {fileID: 518140121}
+--- !u!114 &1309033079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309033073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5694354a72d05e143b3df634aed79b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 1
+  startPoint: {fileID: 0}
+  path: []
+  currency: 0
 --- !u!1 &1588082104
 GameObject:
   m_ObjectHideFlags: 0

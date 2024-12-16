@@ -10943,18 +10943,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ceeebb86b82f24eb10a53aeb4da962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  selectedColor:
-    r: 0
-    g: 1
-    b: 0
-    a: 1
-  button: {fileID: 0}
-  buttonImage: {fileID: 0}
 --- !u!1 &852910387
 GameObject:
   m_ObjectHideFlags: 0
@@ -18289,7 +18277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5694354a72d05e143b3df634aed79b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 2
   startPoint: {fileID: 25841887}
   path:
   - {fileID: 457749528}

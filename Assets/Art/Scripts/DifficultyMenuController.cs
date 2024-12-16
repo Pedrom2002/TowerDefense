@@ -36,22 +36,24 @@ public class DifficultyMenuController : MonoBehaviour
 
     public void SetDifficultyEasy()
     {
-        LevelManager.main.difficulty = LevelManager.DifficultyLevel.Easy;
-        LevelManager.main.ApplyDifficultySettings(); // Aplica as configurações
+        LevelManager.main.SetDifficultyEasy();
+       // Aplica as configurações
         BackToMainMenu(); // Volta ao menu principal
     }
 
     public void SetDifficultyMedium()
     {
-        LevelManager.main.difficulty = LevelManager.DifficultyLevel.Medium;
-        LevelManager.main.ApplyDifficultySettings(); // Aplica as configurações
-        BackToMainMenu(); // Volta ao menu principal
+    LevelManager.main.SetDifficultyMedium();
+
+    // Volta ao menu principal
+    BackToMainMenu();
     }
 
     public void SetDifficultyHard()
     {
-        LevelManager.main.difficulty = LevelManager.DifficultyLevel.Hard;
-        LevelManager.main.ApplyDifficultySettings(); // Aplica as configurações
-        BackToMainMenu(); // Volta ao menu principal
+         // Obtenha uma instância do LevelManager
+    LevelManager.main.SetDifficultyHard();
+    // Volta ao menu principal
+    BackToMainMenu();
     }
 }
